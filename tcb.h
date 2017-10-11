@@ -5,8 +5,8 @@
 struct TCB_t{
 	struct qNode * prev;
 	struct qNode * next;
-    int thread_id;
-    ucontext_t context;
+    	int thread_id;
+    	ucontext_t context;
 };
 
 void init_TCB (TCB_t *tcb, void *function, void *stackP, int stack_size)
