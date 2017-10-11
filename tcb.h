@@ -1,4 +1,13 @@
-#include <ucontext.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<ucontext.h>
+
+struct TCB_t{
+	struct qNode * prev;
+	struct qNode * next;
+    int thread_id;
+    ucontext_t context;
+};
 
 void init_TCB (TCB_t *tcb, void *function, void *stackP, int stack_size)
 // arguments to init_TCB are
