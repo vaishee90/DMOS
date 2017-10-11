@@ -2,11 +2,11 @@
 #include<stdlib.h>
 #include"tcb.h"
 
-struct qNode{
+/*struct qNode{
 	int payload;
 	struct qNode * prev;
 	struct qNode * next;
-};
+};*/
 
 struct qNode * newQueue(){
 
