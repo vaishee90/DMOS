@@ -1,27 +1,28 @@
 #include"q.h"
 
 int loc_thread_id = 0;
+struct TCB_t *Curr_Thread, *ReadyQ;
 
 void start_thread(void (*function)(void))
-{ // begin pseudo code
-     struct TCB_t *tcb;
+{ 
+	// begin pseudo code
 	int sizeOfStack = 8192
      
      // allocate a stack (via malloc) of a certain size (choose 8192)
      (void) *stackP = (void *)malloc(sizeOfStack);
      
      // allocate a TCB (via malloc)
-     tcb = (struct TCB_t*)malloc(sizeof(struct TCB_t));
+     Curr_thread = (struct TCB_t*)malloc(sizeof(struct TCB_t));
      
      //call init_TCB with appropriate arguments
-     init_TCB(tcb, function, stackP, sizeOfStack);
+     init_TCB(Curr_thread, function, stackP, sizeOfStack);
      
      //Add a thread_id (use a counter)
-     tcb->thread_id = loc_thread_id++;
+     Curr_thread->thread_id = loc_thread_id++;
      
      //call addQ to add this TCB into the “ReadyQ” which is a global header pointer
-     AddQueue(ReadyQ, tcb)
-  //end pseudo code
+     AddQueue(ReadyQ, Curr_thread)
+  	//end pseudo code
 }
 
 void run()
