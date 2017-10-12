@@ -1,33 +1,33 @@
 #include"tcb.h"
-
+/*
 struct qNode{
 	int payload;
 	struct qNode * prev;
 	struct qNode * next;
 };
+*/
+struct TCB_t * newQueue(){
 
-struct qNode * newQueue(){
-
-	struct qNode * head;
-	head = (struct qNode*)malloc(sizeof(struct qNode));
+	struct TCB_t * head;
+	head = (struct TCB_t*)malloc(sizeof(struct TCB_t));
 	head->prev = head;
 	head->next = head;
-	head->payload = 999;//dummy value
+	//head->payload = 999;//dummy value
 	return head;
 }
 
-struct qNode * NewItem(int value){
-	struct qNode * node;
-	node = (struct qNode*)malloc(sizeof(struct qNode));
+struct TCB_t * NewItem(){
+	struct TCB_t * node;
+	node = (struct TCB_t*)malloc(sizeof(struct TCB_t));
 	node->prev = NULL;
 	node->next = NULL;
-	node->payload =  value;
+	//node->payload =  value;
 
 	return node;
 }
 
-struct qNode * AddQueue(struct qNode * head,struct qNode * item){
-	struct qNode * temp;
+struct TCB_t * AddQueue(struct TCB_t * head,struct TCB_t * item){
+	struct TCB_t * temp;
 	temp = head;
 	if(head->next == head){
 		head->next = item;
@@ -49,8 +49,8 @@ struct qNode * AddQueue(struct qNode * head,struct qNode * item){
 	return head;
 }
 
-struct qNode * DelQueue(struct qNode * head){
-	struct qNode * del, *temp;	
+struct TCB_t * DelQueue(struct TCB_t * head){
+	struct TCB_t * del, *temp;	
 	if(head->next != head){
 		temp = head;
 		del = head->next;
