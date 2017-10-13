@@ -6,16 +6,6 @@ struct qNode{
 	struct qNode * next;
 };
 */
-struct TCB_t * newQueue(){
-
-	struct TCB_t * head;
-	head = (struct TCB_t*)malloc(sizeof(struct TCB_t));
-	head->prev = head;
-	head->next = head;
-	//head->payload = 999;//dummy value
-	return head;
-}
-
 struct TCB_t * NewItem(){
 	struct TCB_t * node;
 	node = (struct TCB_t*)malloc(sizeof(struct TCB_t));
@@ -24,6 +14,16 @@ struct TCB_t * NewItem(){
 	//node->payload =  value;
 
 	return node;
+}
+
+struct TCB_t * newQueue(){
+
+	struct TCB_t * head;
+	head = NewItem();
+	head->prev = head;
+	head->next = head;
+	//head->payload = 999;//dummy value
+	return head;
 }
 
 struct TCB_t * AddQueue(struct TCB_t * head,struct TCB_t * item){
