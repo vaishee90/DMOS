@@ -50,7 +50,7 @@ message* receive(int port_number){
 	P(port_array[port_number].full);
 	P(port_array[port_number].mutex);
 	//
-	port_msg =  &(port_array[port_number].msg[port_array[port_number].front]);
+	port_msg = &(port_array[port_number].msg[port_array[port_number].front]);
 
 	port_array[port_number].front = (port_array[port_number].front + 1) % MAX_MSG; 
 
@@ -58,12 +58,4 @@ message* receive(int port_number){
 	V(port_array[port_number].empty);
 
 	return port_msg;
-}
-	//
-	port_msg =  &(port_array[port_number].msg[port_array[port_number].front]);
-
-	port_array[port_number].front = (port_array[port_number].front + 1) % MAX_MSG; 
-
-	V(port_array[port_number].mutex);
-	V(port_array[port_number].empty);
 }
