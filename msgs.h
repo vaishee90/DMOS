@@ -29,7 +29,7 @@ void init_port(int port_number){
 }
 
 //Send routine for port
-void send(int port_number, message * port_msg){
+void send(int port_number, message *port_msg){
 
 	P(port_array[port_number].empty);
 	P(port_array[port_number].mutex);
@@ -43,10 +43,22 @@ void send(int port_number, message * port_msg){
 
 }
 
-void receive(int port_number, message * port_msg){
+message* receive(int port_number){
+
+	message *port_msg;
 
 	P(port_array[port_number].full);
 	P(port_array[port_number].mutex);
+	//
+	port_msg =  &(port_array[port_number].msg[port_array[port_number].front]);
+
+	port_array[port_number].front = (port_array[port_number].front + 1) % MAX_MSG; 
+
+	V(port_array[port_number].mutex);
+	V(port_array[port_number].empty);
+
+	return port_msg;
+}
 	//
 	port_msg =  &(port_array[port_number].msg[port_array[port_number].front]);
 
