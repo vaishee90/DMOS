@@ -1,7 +1,3 @@
-//Submitted by:
-//Anandavaishnavi Ardhanari Shanmugam (1211256043)
-//Aditi Sonik (1211009433)
-
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
